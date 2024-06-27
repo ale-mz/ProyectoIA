@@ -1,0 +1,11 @@
+_pycache_/
+.vscode/
+
+datasets/Test*
+datasets/Train*
+
+Logs/Noticias*
+!Logs/Noticias/.gitkeep
+
+checkpoints/*
+!checkpoints/.gitkeep
