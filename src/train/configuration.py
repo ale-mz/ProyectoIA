@@ -30,17 +30,14 @@ def initialize_mode(arg):
     if arg == 0:
       TUNNING = False
       print("\nTuning mode off\n")
-
-      RNG_SEED = 42
-      pytorch_lightning.seed_everything(RNG_SEED)
-
-      N_EPOCHS = 1
-
-      PATIENCE = 2
+      print("Seeds set to random values")
 
     else:
       print("\nTuning mode on\n")
-      print("Seeds set to random values")
+      RNG_SEED = 42
+      pytorch_lightning.seed_everything(RNG_SEED)
+      N_EPOCHS = 1
+      PATIENCE = 2
 
 # *************** Dataset naming constants ********************
 DATASET = "datasets/Dataset_noticias.csv"
