@@ -38,13 +38,13 @@ def manage_arguments():
     # Get the arguments
     parser = argparse.ArgumentParser(
         description="Program to train and run the model")
-    parser.add_argument('Tunning_mode', nargs='?', type=int, default=1,
+    parser.add_argument('mode', nargs='?', type=int, default=1,
                         help="Tuning mode activation: \'0\' to deactivate," +
                         " \'1\' (default) to activate")
     args = parser.parse_args()
     
     # Set the mode in config
-    if args.value == 1: config.initialize_mode(1)
+    if args.mode == 1: config.initialize_mode(1)
     else: config.initialize_mode(0)
 
 # ----------------------------- Prepare the data ------------------------------
@@ -103,6 +103,9 @@ def prepare_model(entry_count : int):
 
 # ------------------------- Train and test the model --------------------------
 def main() -> None:
+    # Manage the
+    manage_arguments()
+
     # Prepare the data
     dataset_wrapper = prepare_data()
     entry_count = len(dataset_wrapper.train_df)

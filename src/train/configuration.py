@@ -17,23 +17,26 @@ from torchmetrics.classification import MultilabelAccuracy, MultilabelPrecision,
 # ----------------------------- Constants -------------------------------------
 # *************** Arguments constants *************************
 TUNNING = True
+RNG_SEED = 0
+N_EPOCHS = 20   
+
 def initialize_mode(arg):
     global TUNNING
+    global RNG_SEED
+    global N_EPOCHS
+
     if arg == 0:
       TUNNING = False
+      print("\nTuning mode off\n")
+
+      RNG_SEED = 42
+      pytorch_lightning.seed_everything(RNG_SEED)
+
+      N_EPOCHS = 1
+
     else:
-      TUNNING = True
-
-# *************** General constants ***************************
-RNG_SEED = 0
-
-# Apply deterministic behavior for tuning
-if TUNNING:
-  print("")
-  RNG_SEED = 42
-  pytorch_lightning.seed_everything(RNG_SEED)
-else:
-   print("\nSeeds set to random values")
+      print("\nTuning mode on\n")
+      print("Seeds set to random values")
 
 # *************** Dataset naming constants ********************
 DATASET = "datasets/Dataset_noticias.csv"
@@ -76,11 +79,6 @@ METRICS = MetricCollection(
 )
 LOSS_FUNCTION = torch.nn.BCELoss()
 BATCH_SIZE = 8
-
-if TUNNING:
-   N_EPOCHS = 1
-else:
-   N_EPOCHS = 20
 
 LEARNING_RATE = 2e-5
 
