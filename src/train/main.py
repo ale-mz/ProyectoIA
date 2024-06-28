@@ -124,8 +124,9 @@ def main() -> None:
     )
 
     # Establish an early stopping once the validation loss has not changed
-    # for 2 epochs
-    early_stopping_callback = EarlyStopping(monitor='val_loss', patience=2)
+    # for the patience number of epochs
+    early_stopping_callback = EarlyStopping(monitor='val_loss',
+                                            patience=config.PATIENCE)
 
     # Create a log to store important data
     logger = TensorBoardLogger("Logs", name="Noticias")

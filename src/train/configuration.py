@@ -18,12 +18,14 @@ from torchmetrics.classification import MultilabelAccuracy, MultilabelPrecision,
 # *************** Arguments constants *************************
 TUNNING = True
 RNG_SEED = 0
-N_EPOCHS = 20   
+N_EPOCHS = 20  
+PATIENCE = 10 
 
 def initialize_mode(arg):
     global TUNNING
     global RNG_SEED
     global N_EPOCHS
+    global PATIENCE
 
     if arg == 0:
       TUNNING = False
@@ -33,6 +35,8 @@ def initialize_mode(arg):
       pytorch_lightning.seed_everything(RNG_SEED)
 
       N_EPOCHS = 1
+
+      PATIENCE = 2
 
     else:
       print("\nTuning mode on\n")
@@ -63,8 +67,9 @@ MUTLILINGUAL = "bert-base-multilingual-cased"
 BETO_MLDOC = "dccuchile/bert-base-spanish-wwm-cased-finetuned-mldoc"
 BETO_PAWSX = "dccuchile/bert-base-spanish-wwm-cased-finetuned-pawsx"
 BETO_XNLI = "dccuchile/bert-base-spanish-wwm-cased-finetuned-xnli"
+BETO = "dccuchile/bert-base-spanish-wwm-cased"
 
-MODEL_NAME = MUTLILINGUAL
+MODEL_NAME = BETO
 
 METRICS = MetricCollection(
         {
