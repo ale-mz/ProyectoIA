@@ -11,7 +11,7 @@ import pytorch_lightning
 
 from transformers import BertModel, get_linear_schedule_with_warmup
 
-import configuration as config
+import configuration.configuration as config
 
 # ----------------------------- Class definition ------------------------------
 # Wrapper class for the Model with its head

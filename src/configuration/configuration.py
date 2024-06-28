@@ -66,7 +66,7 @@ BETO_PAWSX = "dccuchile/bert-base-spanish-wwm-cased-finetuned-pawsx"
 BETO_XNLI = "dccuchile/bert-base-spanish-wwm-cased-finetuned-xnli"
 BETO = "dccuchile/bert-base-spanish-wwm-cased"
 
-MODEL_NAME = BETO
+MODEL_NAME = MUTLILINGUAL
 
 METRICS = MetricCollection(
         {
@@ -83,6 +83,10 @@ LOSS_FUNCTION = torch.nn.BCELoss()
 BATCH_SIZE = 8
 
 LEARNING_RATE = 2e-5
+
+# *************** Evaluator Constants ***********************
+THRESHOLD = 0.5
+CHECKPOINT = "checkpoints/best-checkpoint.ckpt"
 
 # The activation function and the optimization algorithm should
 # be here, but their constructions depends on the model data

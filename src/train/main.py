@@ -10,6 +10,11 @@ import pytorch_lightning
 # Import pandas to manipulate dataframes
 import pandas
 
+# Add the parent directory to the sys.path
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 # Import model checkpoint (to store the trained model),
 # the early stopping (to helo preventing overfitting) and the logger
 # (to inform)
@@ -29,7 +34,7 @@ from pathlib import Path
 import argparse
 
 # Import the created code
-import configuration as config
+import configuration.configuration as config
 from dataset_wrapper import CustomDatasetWrapper
 from model import Model
 
