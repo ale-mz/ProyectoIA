@@ -11,7 +11,7 @@ from torch.utils.data import Dataset
 
 from transformers import AutoTokenizer
 
-import configuration as config
+import configuration.configuration as config
 
 # ----------------------------- Class definition ------------------------------
 # Specialized Dataset class for the Custom data
