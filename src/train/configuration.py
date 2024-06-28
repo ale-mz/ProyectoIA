@@ -19,10 +19,10 @@ from torchmetrics.classification import MultilabelAccuracy, MultilabelPrecision,
 TUNNING = True
 def initialize_mode(arg):
     global TUNNING
-    if arg == 1:
-      TUNNING = True
-    else:
+    if arg == 0:
       TUNNING = False
+    else:
+      TUNNING = True
 
 # *************** General constants ***************************
 RNG_SEED = 0
