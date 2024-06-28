@@ -1,5 +1,7 @@
 _pycache_/
 .vscode/
+.RData
+.Rhistory
 
 datasets/Test*
 datasets/Train*
