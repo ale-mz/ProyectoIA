@@ -32,6 +32,8 @@ if TUNNING:
   print("")
   RNG_SEED = 42
   pytorch_lightning.seed_everything(RNG_SEED)
+else:
+   print("\nSeeds set to random values")
 
 # *************** Dataset naming constants ********************
 DATASET = "datasets/Dataset_noticias.csv"
@@ -55,8 +57,9 @@ CLASS_NUM = len(CLASS_NAMES)
 
 # *************** Model config constants ***********************
 MUTLILINGUAL = "bert-base-multilingual-cased"
-TULIO = "dccuchile/tulio-chilean-spanish-bert"
-ALBERT = "dccuchile/albert-base-spanish"
+BETO_MLDOC = "dccuchile/bert-base-spanish-wwm-cased-finetuned-mldoc"
+BETO_PAWSX = "dccuchile/bert-base-spanish-wwm-cased-finetuned-pawsx"
+BETO_XNLI = "dccuchile/bert-base-spanish-wwm-cased-finetuned-xnli"
 
 MODEL_NAME = MUTLILINGUAL
 
