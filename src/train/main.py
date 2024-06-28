@@ -51,7 +51,7 @@ def manage_arguments():
 def prepare_data():
     # If there is already an split, use it
     if Path(config.TRAIN_DATASET).exists() and \
-      Path(config.TEST_DATASET).exists():
+      Path(config.TEST_DATASET).exists() and config.TUNNING:
         train_df = pandas.read_csv(config.TRAIN_DATASET)
         test_df = pandas.read_csv(config.TEST_DATASET)
       
