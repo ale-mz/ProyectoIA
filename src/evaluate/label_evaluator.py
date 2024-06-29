@@ -69,6 +69,7 @@ def tokenize_new(new):
 
     return encoding
 
+# ----------------------------- Evaluate model --------------------------------
 def main(file_path: str) -> None:
     # Set device to GPU if available, else CPU
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

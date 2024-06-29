@@ -19,7 +19,10 @@ import pandas
 # the early stopping (to helo preventing overfitting) and the logger
 # (to inform)
 from pytorch_lightning.callbacks import ModelCheckpoint, EarlyStopping
-from pytorch_lightning.loggers import TensorBoardLogger
+from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
+
+# Import wandb for the logger
+import wandb
 
 # Import sklearn to split randomly the dataset
 from sklearn.model_selection import train_test_split
@@ -106,6 +109,29 @@ def prepare_model(entry_count : int):
     # return the model
     return model
 
+# ------------------------- Set wandb -----------------------------------------
+def set_wandb():
+    wandb.init(
+      # set the wandb project where this run will be logged
+      project=config.PROJECT_NAME,
+
+      # track hyperparameters and run metadata
+      config={
+      "learning_rate": config.LEARNING_RATE,
+      "architecture": "Bert",
+      "dataset": config.DATASET,
+      "epochs": config.N_EPOCHS,
+    }
+    )
+
+    # Create an id for the log
+    id = (config.MODEL_NAME + "_" + wandb.util.generate_id())
+
+    # Create the logger
+    logger = WandbLogger(project=config.PROJECT_NAME, id=id, resume="allow")
+
+    return logger
+
 # ------------------------- Train and test the model --------------------------
 def main() -> None:
     # Prepare the data
@@ -131,11 +157,12 @@ def main() -> None:
                                             patience=config.PATIENCE)
 
     # Create a log to store important data
-    logger = TensorBoardLogger("Logs", name="Noticias")
+    wandb_logger = set_wandb()
+    base_logger = TensorBoardLogger("Logs", name="Noticias")
     
     # Create the trainer for the model
     trainer = pytorch_lightning.Trainer(
-      logger=logger,
+      logger=wandb_logger,
       callbacks=[checkpoint_callback, early_stopping_callback],
       max_epochs=config.N_EPOCHS,
       enable_progress_bar=True,

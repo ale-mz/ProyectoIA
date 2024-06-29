@@ -77,6 +77,7 @@ install-deps:
 	pip install --upgrade scipy
 	pip install --upgrade torch
 	pip install --upgrade torchmetrics
+	pip install --upgrade wandb
 
 # ----------------------------- Training rules --------------------------------
 # Rule to train the model with tuning mode on

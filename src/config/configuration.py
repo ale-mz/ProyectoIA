@@ -39,6 +39,9 @@ def initialize_mode(arg):
       N_EPOCHS = 1
       PATIENCE = 2
 
+# *************** General constants ***************************
+PROJECT_NAME = "Proyecto IA Transformers - Noticias"
+
 # *************** Dataset naming constants ********************
 DATASET = "datasets/Dataset_noticias.csv"
 TRAIN_DATASET = "datasets/Train_Noticias.csv"

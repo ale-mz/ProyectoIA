@@ -1,5 +1,6 @@
 *_pycache_*
 .vscode/
+.wandb*
 .RData
 .Rhistory
 
