@@ -4,16 +4,16 @@
 # Special thanks to A. Badilla
 
 # ----------------------------- Imports --------------------------------------
+# Add the parent directory to the sys.path
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 # Import pytorch lightning to train the model
 import pytorch_lightning
 
 # Import pandas to manipulate dataframes
 import pandas
-
-# Add the parent directory to the sys.path
-import sys
-import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Import model checkpoint (to store the trained model),
 # the early stopping (to helo preventing overfitting) and the logger
@@ -34,7 +34,7 @@ from pathlib import Path
 import argparse
 
 # Import the created code
-import configuration.configuration as config
+import config.configuration as config
 from dataset_wrapper import CustomDatasetWrapper
 from model import Model
 
@@ -108,9 +108,6 @@ def prepare_model(entry_count : int):
 
 # ------------------------- Train and test the model --------------------------
 def main() -> None:
-    # Manage the
-    manage_arguments()
-
     # Prepare the data
     dataset_wrapper = prepare_data()
     entry_count = len(dataset_wrapper.train_df)
@@ -150,4 +147,7 @@ def main() -> None:
     trainer.test(model, dataset_wrapper)
 
 if __name__ == "__main__":
+    # Manage the arguments
+    manage_arguments()
+    # Call main
     main()
