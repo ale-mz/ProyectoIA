@@ -60,6 +60,9 @@ NOTICIA = DATA.columns.tolist()[5]
 CLASS_NAMES = DATA.columns.tolist()[6:]
 CLASS_NUM = len(CLASS_NAMES)
 
+# Name of the temp column to stratify data
+COMBINED_LABELS = 'labels_combinados'
+
 # *************** Model config constants ***********************
 MUTLILINGUAL = "bert-base-multilingual-cased"
 BETO_MLDOC = "dccuchile/bert-base-spanish-wwm-cased-finetuned-mldoc"

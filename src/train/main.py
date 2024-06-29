@@ -57,10 +57,20 @@ def manage_arguments():
 
 # ----------------------------- Prepare the data ------------------------------
 def prepare_data():
+    # Create a column to stratify with
+    config.DATA[config.COMBINED_LABELS] = \
+      config.DATA[config.CLASS_NAMES].astype(str).agg(''.join, axis=1)
+
     # Split the dataset randomly into training and testing
     train_df, test_df = train_test_split(
-        config.DATA, test_size=config.TEST_SIZE, stratify=config.CLASS_NAMES,
+        config.DATA, test_size=config.TEST_SIZE,
+        stratify=config.DATA[config.COMBINED_LABELS],
         shuffle=True)
+    
+    # Drop the combined_labels column as it's no longer needed
+    train_df = train_df.drop(columns=[config.COMBINED_LABELS])
+    test_df = test_df.drop(columns=[config.COMBINED_LABELS])
+
     # Store the dataframes in a csv file each
     train_df.to_csv(config.TRAIN_DATASET)
     test_df.to_csv(config.TEST_DATASET)
