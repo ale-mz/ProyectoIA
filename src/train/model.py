@@ -106,7 +106,9 @@ class Model(pytorch_lightning.LightningModule):
         labels = batch["labels"]
 
         # Execute the model
-        loss, outputs = self(input_ids, attention_mask, labels)
+        loss, outputs = self.forward(input_ids, attention_mask, labels)
+
+        # Update the metrics based on the results
         self.test_metrics.update(outputs, labels)
 
         # Update the progress bar indicating the loss

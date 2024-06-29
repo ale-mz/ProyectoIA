@@ -19,13 +19,12 @@ from torchmetrics.classification import MultilabelAccuracy, MultilabelPrecision,
 TUNNING = True
 RNG_SEED = 0
 N_EPOCHS = 30  
-PATIENCE = 10 
+PATIENCE = 3 
 
 def initialize_mode(arg):
     global TUNNING
     global RNG_SEED
     global N_EPOCHS
-    global PATIENCE
 
     if arg == 0:
       TUNNING = False
@@ -37,7 +36,6 @@ def initialize_mode(arg):
       RNG_SEED = 42
       pytorch_lightning.seed_everything(RNG_SEED)
       N_EPOCHS = 1
-      PATIENCE = 5
 
 # *************** General constants ***************************
 PROJECT_NAME = "Proyecto IA Transformers - Noticias"

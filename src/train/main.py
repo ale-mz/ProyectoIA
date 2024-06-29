@@ -59,7 +59,8 @@ def manage_arguments():
 def prepare_data():
     # Split the dataset randomly into training and testing
     train_df, test_df = train_test_split(
-        config.DATA, test_size=config.TEST_SIZE)
+        config.DATA, test_size=config.TEST_SIZE, stratify=config.CLASS_NAMES,
+        shuffle=True)
     # Store the dataframes in a csv file each
     train_df.to_csv(config.TRAIN_DATASET)
     test_df.to_csv(config.TEST_DATASET)

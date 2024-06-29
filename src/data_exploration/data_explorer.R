@@ -12,11 +12,11 @@ library(tidyr)
 library(ggplot2)
 library(reshape2)
 library(scales)
+
 # ------------------------------- Data reading --------------------------------
 
 # Read the dataset
 news <- (read.csv("../../datasets/Dataset_noticias.csv", header=T, encoding = "UTF-8"))
-
 
 # ------------------------------- Data formatting -----------------------------
 
@@ -28,10 +28,10 @@ news_cleaned <- news %>%
     -Autor
   )
 
-# Formta the date, add a column to the number of characters per news
+# Format the date, add a column to the number of characters per news
 news_cleaned <- news_cleaned %>%
-  mutate(Fecha.publicacion = dmy(Fecha.publicacion),
-          Longitud.noticia = nchar(Noticia))
+  mutate(Fecha.publicacion = dmy(Fecha.publicacion)) %>%
+  mutate(Longitud.noticia = nchar(Noticia))
 
 # ------------------------------- Table construction --------------------------
 
