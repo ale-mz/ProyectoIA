@@ -57,26 +57,13 @@ def manage_arguments():
 
 # ----------------------------- Prepare the data ------------------------------
 def prepare_data():
-    # If there is already an split, use it
-    if Path(config.TRAIN_DATASET).exists() and \
-      Path(config.TEST_DATASET).exists() and config.TUNNING:
-        train_df = pandas.read_csv(config.TRAIN_DATASET)
-        test_df = pandas.read_csv(config.TEST_DATASET)
-      
-        print("\nUsing pre-defined train and test data\n")
+    # Split the dataset randomly into training and testing
+    train_df, test_df = train_test_split(
+        config.DATA, test_size=config.TEST_SIZE)
+    # Store the dataframes in a csv file each
+    train_df.to_csv(config.TRAIN_DATASET)
+    test_df.to_csv(config.TEST_DATASET)
 
-    # If there is not an split
-    else:
-      # Split the dataset randomly into training and testing
-      train_df, test_df = train_test_split(
-          config.DATA, test_size=config.TEST_SIZE)
-      # Store the dataframes in a csv file each
-      train_df.to_csv(config.TRAIN_DATASET)
-      test_df.to_csv(config.TEST_DATASET)
-
-      print("\nPre-defined train and test data not found" +
-            "\nCreating new train and test data using seed\n")
-    
     # Create a tokenizer based on the model
     tokenizer = AutoTokenizer.from_pretrained(config.MODEL_NAME)
    
@@ -158,6 +145,7 @@ def main() -> None:
 
     # Create a log to store important data
     wandb_logger = set_wandb()
+    
     base_logger = TensorBoardLogger("Logs", name="Noticias")
     
     # Create the trainer for the model

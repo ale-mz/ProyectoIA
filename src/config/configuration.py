@@ -18,7 +18,7 @@ from torchmetrics.classification import MultilabelAccuracy, MultilabelPrecision,
 # *************** Arguments constants *************************
 TUNNING = True
 RNG_SEED = 0
-N_EPOCHS = 20  
+N_EPOCHS = 30  
 PATIENCE = 10 
 
 def initialize_mode(arg):
@@ -37,7 +37,7 @@ def initialize_mode(arg):
       RNG_SEED = 42
       pytorch_lightning.seed_everything(RNG_SEED)
       N_EPOCHS = 1
-      PATIENCE = 2
+      PATIENCE = 5
 
 # *************** General constants ***************************
 PROJECT_NAME = "Proyecto IA Transformers - Noticias"
@@ -88,7 +88,7 @@ BATCH_SIZE = 8
 LEARNING_RATE = 2e-5
 
 # *************** Evaluator Constants ***********************
-THRESHOLD = 0.5
+THRESHOLD = 0.0
 CHECKPOINT = "checkpoints/best-checkpoint.ckpt"
 
 # The activation function and the optimization algorithm should
