@@ -25,6 +25,7 @@ from pytorch_lightning.loggers import TensorBoardLogger, WandbLogger
 import wandb
 
 # Import sklearn to split randomly the dataset
+from sklearn.utils import shuffle
 from sklearn.model_selection import train_test_split
 
 # Import transformers to get the tokenizer
@@ -61,11 +62,21 @@ def prepare_data():
     config.DATA[config.COMBINED_LABELS] = \
       config.DATA[config.CLASS_NAMES].astype(str).agg(''.join, axis=1)
 
+    # Split the data base on it being real or artificial
+    real_data = config.DATA[config.DATA[config.REVISADO_POR] !=
+                            "Generado artificialmente"]
+    artificial_data = config.DATA[config.DATA[config.REVISADO_POR] ==
+                            "Generado artificialmente"]
+
     # Split the dataset randomly into training and testing
     train_df, test_df = train_test_split(
-        config.DATA, test_size=config.TEST_SIZE,
-        stratify=config.DATA[config.COMBINED_LABELS],
+        real_data,
+        test_size=(config.TEST_SIZE * config.DATA.shape[0]) / real_data.shape[0],
+        stratify=real_data[config.COMBINED_LABELS],
         shuffle=True)
+    
+    # Add the artificial data to the training data and shuffle it
+    train_df = shuffle(pandas.concat([train_df, artificial_data]))
     
     # Drop the combined_labels column as it's no longer needed
     train_df = train_df.drop(columns=[config.COMBINED_LABELS])

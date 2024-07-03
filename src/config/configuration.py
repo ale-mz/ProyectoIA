@@ -54,6 +54,7 @@ MAX_TOKEN_COUNT = 512
 DATA = pandas.read_csv(DATASET)
 
 # Name of the noticia cell
+REVISADO_POR = DATA.columns.tolist()[1]
 NOTICIA = DATA.columns.tolist()[5]
 
 # Name of the classes from the dataframe
