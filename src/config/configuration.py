@@ -19,7 +19,7 @@ from torchmetrics.classification import MultilabelAccuracy, MultilabelPrecision,
 TUNNING = True
 RNG_SEED = 0
 N_EPOCHS = 30  
-PATIENCE = 3 
+PATIENCE = 4
 
 def initialize_mode(arg):
     global TUNNING
@@ -70,8 +70,9 @@ BETO_MLDOC = "dccuchile/bert-base-spanish-wwm-cased-finetuned-mldoc"
 BETO_PAWSX = "dccuchile/bert-base-spanish-wwm-cased-finetuned-pawsx"
 BETO_XNLI = "dccuchile/bert-base-spanish-wwm-cased-finetuned-xnli"
 BETO = "dccuchile/bert-base-spanish-wwm-cased"
+TULIO = "dccuchile/tulio-chilean-spanish-bert"
 
-MODEL_NAME = MUTLILINGUAL
+MODEL_NAME = TULIO
 
 METRICS = MetricCollection(
         {
