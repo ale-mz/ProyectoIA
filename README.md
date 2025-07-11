@@ -1,27 +1,24 @@
-Multi-Label News Classification with BERT and PyTorch Lightning
+# Multi-Label News Classification with BERT and PyTorch Lightning
 
-This project implements a multi-label text classification system to categorize news articles into predefined categories using a fine-tuned BERT model. Developed with PyTorch Lightning for efficient training and experiment management, this solution provides a robust and scalable approach to news categorization.
+> ⚠️ **Warning**  
+> This project requires a **powerful device with a GPU** and the **appropriate CUDA drivers** installed for optimal performance. Training BERT-based models without GPU support may result in extremely slow training or execution failure.
 
-Features
+## Overview
 
-    Multi-Label Classification: Accurately assigns multiple relevant categories to a single news article.
+This project implements a **multi-label text classification** system to categorize news articles into predefined categories using a **fine-tuned BERT model**. Developed with **PyTorch Lightning** for efficient training and experiment management, this solution provides a robust and scalable approach to news categorization.
 
-    BERT-based Model: Leverages the power of pre-trained BERT models (specifically bert-base-multilingual-cased by default) for high-performance text understanding.
+## Features
 
-    PyTorch Lightning Framework: Utilizes PyTorch Lightning for streamlined training loops, automatic device placement (GPU/CPU), and reduced boilerplate code.
+- **Multi-Label Classification**: Accurately assigns multiple relevant categories to a single news article.
+- **BERT-based Model**: Leverages the power of pre-trained BERT models (`bert-base-multilingual-cased` by default) for high-performance text understanding.
+- **PyTorch Lightning Framework**: Utilizes PyTorch Lightning for streamlined training loops, automatic device placement (GPU/CPU), and reduced boilerplate code.
+- **Configurable Training**: Easily adjustable hyperparameters such as learning rate, batch size, number of epochs, and model name via `configuration.py`.
+- **Early Stopping & Checkpointing**: Prevents overfitting and saves the best performing model checkpoint during training.
+- **Comprehensive Metrics**: Tracks key multi-label classification metrics including Macro and Micro Accuracy, Precision, Recall, and F1-Score.
+- **Weights & Biases Integration**: Logs experiment metrics, hyperparameters, and model checkpoints to Weights & Biases.
+- **Inference Script**: Includes `label_evaluator.py` to classify new articles using a trained model.
 
-    Configurable Training: Easily adjustable hyperparameters such as learning rate, batch size, number of epochs, and model name via configuration.py.
-
-    Early Stopping & Checkpointing: Implements early stopping to prevent overfitting and saves the best performing model checkpoint during training.
-
-    Comprehensive Metrics: Tracks key multi-label classification metrics including Macro and Micro Accuracy, Precision, Recall, and F1-Score during training, validation, and testing.
-
-    Weights & Biases Integration: Seamlessly logs experiment metrics, hyperparameters, and model checkpoints to Weights & Biases for effective experiment tracking and visualization.
-
-    Inference Script: Includes a dedicated script (label_evaluator.py) to classify new news articles using a trained model.
-
-Project Structure
-
+## Project Structure
 .
 ├── checkpoints/
 │   └── best-checkpoint.ckpt  # Trained model checkpoints
