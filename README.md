@@ -19,22 +19,25 @@ This project implements a **multi-label text classification** system to categori
 - **Inference Script**: Includes `label_evaluator.py` to classify new articles using a trained model.
 
 ## Project Structure
+
+```text
 .
 ├── checkpoints/
-│   └── best-checkpoint.ckpt  # Trained model checkpoints
+│   └── best-checkpoint.ckpt        # Trained model checkpoint
 ├── config/
-│   └── configuration.py      # Global project configurations and hyperparameters
+│   └── configuration.py            # Global project configurations and hyperparameters
 ├── datasets/
-│   ├── Dataset_noticias.csv  # Raw input dataset (example)
-│   ├── Train_Noticias.csv    # Processed training data
-│   └── Test_Noticias.csv     # Processed testing data
-├── dataset.py                # PyTorch Dataset for loading and tokenizing news data
-├── dataset_wrapper.py        # PyTorch Lightning DataModule for data loaders
-├── label_evaluator.py        # Script for evaluating news articles with a trained model
-├── main.py                   # Main script for training and testing the model
-└── model.py                  # PyTorch Lightning module defining the BERT model and its training logic
+│   ├── Dataset_noticias.csv        # Raw input dataset (example)
+│   ├── Train_Noticias.csv          # Processed training data
+│   └── Test_Noticias.csv           # Processed testing data
+├── dataset.py                      # PyTorch Dataset for loading and tokenizing news data
+├── dataset_wrapper.py              # PyTorch Lightning DataModule for data loaders
+├── label_evaluator.py              # Script for evaluating news articles with a trained model
+├── main.py                         # Main script for training and testing the model
+└── model.py                        # PyTorch Lightning module defining the BERT model and its training logic
+```
 
-Getting Started
+## Getting Started
 
 Prerequisites
 
